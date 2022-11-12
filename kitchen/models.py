@@ -35,6 +35,7 @@ class Cook(AbstractUser):
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
+        ordering = ["first_name", "last_name"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
