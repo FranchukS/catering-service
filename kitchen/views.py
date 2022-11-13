@@ -5,12 +5,11 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm
+from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm, DishSearchForm
 from kitchen.models import Cook, Dish, Category
 
 
 def index(request):
-    """View function for the home page of the site."""
 
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
@@ -85,6 +84,23 @@ class DishListView(generic.ListView):
     model = Dish
     paginate_by = 5
     queryset = Dish.objects.select_related("category")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = DishSearchForm(
+            initial={"name": name}
+        )
+
+        return context
+
+    def get_queryset(self):
+        name = self.request.GET.get("name")
+
+        if name:
+            return self.queryset.filter(name__icontains=name)
+        return self.queryset
 
 
 class DishDetailView(generic.DetailView):
