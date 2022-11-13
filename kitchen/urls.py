@@ -2,10 +2,10 @@ from django.urls import path
 
 from kitchen.views import (
     index, CategoryListView,
-    CategoryDetailView,
-    CategoryCreateView,
-    CategoryUpdateView,
-    CategoryDeleteView, CookListView,
+    CategoryDetailView, CategoryCreateView,
+    CategoryUpdateView, CategoryDeleteView,
+    CookListView, CookDetailView,
+
 )
 
 
@@ -17,7 +17,8 @@ urlpatterns = [
     path("categories/<int:pk>/update/", CategoryUpdateView.as_view(), name="category-update"),
     path("categories/<int:pk>/delete/", CategoryDeleteView.as_view(), name="category-delete"),
 
-    path("Cook/", CookListView.as_view(), name="cook-list"),
+    path("cooks/", CookListView.as_view(), name="cook-list"),
+    path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
 
 
 ]
