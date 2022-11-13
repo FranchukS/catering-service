@@ -10,6 +10,7 @@
     <h5>Price: {{ dish.price }}</h5>
   </div>
   {% if user in dish.cooks.all %}
+    {% if user.is_authenticated %}
       <a style="margin-top: 30px" href="{% url 'kitchen:assign-or-discharge' pk=dish.id %}" class="btn btn-danger link-to-page">
         Discharge from this dish
       </a>
@@ -17,6 +18,7 @@
       <a style="margin-top: 30px" href="{% url 'kitchen:assign-or-discharge' pk=dish.id %}" class="btn btn-success link-to-page">
         Assign me to this dish
       </a>
+    {% endif %}
   {% endif %}
   <hr>
   <div class="description">
@@ -33,10 +35,12 @@
   {% else %}
     <p>There are no cooks who can prepare this dish</p>
   {% endif %}
-  <a style="float: left" href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
-      Update
-  </a>
-  <a style="margin-left: 15px" href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
-      Delete
-  </a>
+  {% if user.is_authenticated %}
+    <a style="float: left" href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+        Update
+    </a>
+    <a style="margin-left: 15px" href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Delete
+    </a>
+  {% endif %}
 {% endblock %}

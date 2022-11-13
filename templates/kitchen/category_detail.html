@@ -8,7 +8,7 @@
   {% if category.dishes.all %}
   <ul>
     {% for dish in category.dishes.all %}
-      <li><a href="">{{ dish.name }}</a></li>
+      <li><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></li>
     {% endfor %}
   </ul>
   {% else %}

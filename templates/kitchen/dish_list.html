@@ -3,9 +3,11 @@
 {% block content %}
   <h1>
     Dish list
-    <a class="btn btn-primary" href="{% url 'kitchen:dish-create' %}">
-      add new dish
-    </a>
+    {% if user.is_authenticated %}
+      <a style="margin-left: 15px" class="btn btn-primary" href="{% url 'kitchen:dish-create' %}">
+        add new dish
+      </a>
+    {% endif %}
   </h1>
   <br>
    {% include "includes/search.html" %}

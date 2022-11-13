@@ -56,19 +56,19 @@ class CategoryDetailView(generic.DetailView):
     queryset = Category.objects.all().prefetch_related("dishes")
 
 
-class CategoryCreateView(generic.CreateView):
+class CategoryCreateView(LoginRequiredMixin, generic.CreateView):
     model = Category
     fields = "__all__"
     success_url = reverse_lazy("kitchen:category-list")
 
 
-class CategoryUpdateView(generic.UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Category
     fields = "__all__"
     success_url = reverse_lazy("kitchen:category-list")
 
 
-class CategoryDeleteView(generic.DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Category
     success_url = reverse_lazy("kitchen:category-list")
 

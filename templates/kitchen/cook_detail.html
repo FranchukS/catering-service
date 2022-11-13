@@ -24,7 +24,7 @@
               {{ dish.id }}
             </td>
             <td>
-              <a href="">{{ dish.name }}</a>
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id%}">{{ dish.name }}</a>
             </td>
             <td>
               <a href="{% url 'kitchen:category-detail' pk=dish.category.id%}">{{ dish.category.name }}</a>
@@ -34,8 +34,10 @@
           <p>This cook have nothing to offer</p>
         {% endfor %}
       </table>
+    {% if user.is_authenticated %}
       <hr>
       <a class="btn btn-secondary" href="{% url 'kitchen:experience-update' pk=cook.id %}">Update experience info</a>
       <a class="btn btn-danger" href="{%  url 'kitchen:cook-delete' pk=cook.id %}">Delete cook</a>
+    {% endif %}
   </div>
 {% endblock %}
