@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Category List
+    <a href="">
+      Create
+    </a>
+  </h1>
+
+  {% if category_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for category in category_list %}
+        <tr>
+          <td>
+              {{ category.id }}
+          </td>
+          <td>
+              {{ category.name }}
+          </td>
+          <td>
+              <a href="">Update</a>
+          </td>
+          <td>
+            <a style="color: red" href="">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no categories in the service.</p>
+  {% endif %}
+{% endblock %}
