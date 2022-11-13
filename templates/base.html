@@ -17,15 +17,18 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-3">
 
       {% block sidebar %}
       {% endblock %}
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       {% block content %}
       {% endblock %}
+
+    {% block pagination %}
+    {% endblock %}
 
     </div>
   </div>
