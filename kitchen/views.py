@@ -72,3 +72,9 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 class CookExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cook
     form_class = CookExperienceUpdateForm
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Cook
+    success_url = reverse_lazy("kitchen:cook-list")
+
