@@ -108,7 +108,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 @login_required
-def assign_or_disharge(request, pk):
+def assign_or_discharge(request, pk):
     dish = Dish.objects.get(pk=pk)
     user = request.user
     if user in dish.cooks.all():
