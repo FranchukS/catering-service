@@ -50,3 +50,8 @@ class CategoryUpdateView(generic.UpdateView):
 class CategoryDeleteView(generic.DeleteView):
     model = Category
     success_url = reverse_lazy("kitchen:category-list")
+
+
+class CookListView(generic.ListView):
+    model = Cook
+    paginate_by = 5
