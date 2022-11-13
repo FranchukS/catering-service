@@ -1,8 +1,9 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from kitchen.models import Cook
+from kitchen.models import Cook, Dish
 
 
 class ExperienceValidateMixin:
@@ -35,3 +36,15 @@ class CookExperienceUpdateForm(ExperienceValidateMixin, forms.ModelForm):
     class Meta:
         model = Cook
         fields = ("years_of_experience",)
+
+
+class DishForm(forms.ModelForm):
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    class Meta:
+        model = Dish
+        fields = "__all__"
