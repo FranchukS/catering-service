@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from kitchen.models import Cook, Dish, Category
@@ -33,3 +34,8 @@ class CategoryDetailView(generic.DetailView):
     model = Category
     queryset = Category.objects.all().prefetch_related("dishes")
 
+
+class CategoryCreateView(generic.CreateView):
+    model = Category
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:category-list")
