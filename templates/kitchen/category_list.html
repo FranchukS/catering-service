@@ -29,7 +29,7 @@
               <a href="{% url "kitchen:category-update" pk=category.id %}">Update</a>
           </td>
           <td>
-            <a style="color: red" href="">Delete</a>
+            <a style="color: red" href="{% url "kitchen:category-delete" pk=category.id %}">Delete</a>
           </td>
         </tr>
       {% endfor %}
