@@ -79,7 +79,12 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:cook-list")
 
 
-class DishListView(LoginRequiredMixin, generic.ListView):
+class DishListView(generic.ListView):
     model = Dish
     paginate_by = 5
     queryset = Dish.objects.select_related("category")
+
+
+class DishDetailView(generic.DetailView):
+    model = Dish
+    # queryset = Dish.objects.select_related("cooks")
