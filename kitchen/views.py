@@ -1,7 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from kitchen.forms import CookCreationForm
 from kitchen.models import Cook, Dish, Category
 
 
@@ -60,3 +62,8 @@ class CookListView(generic.ListView):
 class CookDetailView(generic.DetailView):
     model = Cook
     queryset = Cook.objects.prefetch_related("dishes__category")
+
+
+class CookCreateView(LoginRequiredMixin, generic.CreateView):
+    form_class = CookCreationForm
+    template_name = "kitchen/cook_form.html"
