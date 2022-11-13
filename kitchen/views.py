@@ -39,3 +39,9 @@ class CategoryCreateView(generic.CreateView):
     model = Category
     fields = "__all__"
     success_url = reverse_lazy("kitchen:category-list")
+
+
+class CategoryUpdateView(generic.UpdateView):
+    model = Category
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:category-list")
