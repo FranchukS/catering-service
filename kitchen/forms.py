@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
@@ -30,3 +31,7 @@ class CookCreationForm(ExperienceValidateMixin, UserCreationForm):
         )
 
 
+class CookExperienceUpdateForm(ExperienceValidateMixin, forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ("years_of_experience",)

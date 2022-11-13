@@ -35,7 +35,7 @@
         {% endfor %}
       </table>
       <hr>
-      <a class="btn btn-secondary" href="">Update experience info</a>
+      <a class="btn btn-secondary" href="{% url 'kitchen:experience-update' pk=cook.id %}">Update experience info</a>
       <a class="btn btn-danger" href="">Delete cook</a>
   </div>
 {% endblock %}
