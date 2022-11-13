@@ -93,3 +93,8 @@ class DishDetailView(generic.DetailView):
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = DishForm
     template_name = "kitchen/dish_form.html"
+
+
+class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Dish
+    fields = "__all__"

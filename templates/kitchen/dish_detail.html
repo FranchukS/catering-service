@@ -24,4 +24,7 @@
   {% else %}
     <p>There are no cooks who can prepare this dish</p>
   {% endif %}
+  <a style="float: left" href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+      Update
+  </a>
 {% endblock %}
