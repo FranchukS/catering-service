@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm, DishSearchForm, CookSearchForm
+from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm, SearchForm
 from kitchen.models import Cook, Dish, Category
 
 
@@ -31,6 +31,24 @@ def index(request):
 class CategoryListView(generic.ListView):
     model = Category
     paginate_by = 5
+    queryset = Category.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("username", "")
+
+        context["search_form"] = SearchForm(
+            initial={"name": name}
+        )
+
+        return context
+
+    def get_queryset(self):
+        name = self.request.GET.get("name")
+
+        if name:
+            return self.queryset.filter(name__icontains=name)
+        return self.queryset
 
 
 class CategoryDetailView(generic.DetailView):
@@ -62,19 +80,19 @@ class CookListView(generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CookListView, self).get_context_data(**kwargs)
-        username = self.request.GET.get("username", "")
+        name = self.request.GET.get("name", "")
 
-        context["search_form"] = CookSearchForm(
-            initial={"username": username}
+        context["search_form"] = SearchForm(
+            initial={"name": name}
         )
 
         return context
 
     def get_queryset(self):
-        username = self.request.GET.get("username")
+        name = self.request.GET.get("name")
 
-        if username:
-            return self.queryset.filter(username__icontains=username)
+        if name:
+            return self.queryset.filter(username__icontains=name)
         return self.queryset
 
 
@@ -107,7 +125,7 @@ class DishListView(generic.ListView):
         context = super(DishListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = DishSearchForm(
+        context["search_form"] = SearchForm(
             initial={"name": name}
         )
 
