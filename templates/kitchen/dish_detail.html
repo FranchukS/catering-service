@@ -9,7 +9,16 @@
     <h5>Category: <a href="{% url 'kitchen:category-detail' pk=dish.category.id %}">{{ dish.category.name }}</a></h5>
     <h5>Price: {{ dish.price }}</h5>
   </div>
-  <br>
+  {% if user in dish.cooks.all %}
+      <a style="margin-top: 30px" href="{% url 'kitchen:add-or-remove-dish' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Discharge from this dish
+      </a>
+      {% else %}
+      <a style="margin-top: 30px" href="{% url 'kitchen:add-or-remove-dish' pk=dish.id %}" class="btn btn-success link-to-page">
+        Assign me to this dish
+      </a>
+  {% endif %}
+  <hr>
   <div class="description">
     {{ dish.description }}
   </div>
