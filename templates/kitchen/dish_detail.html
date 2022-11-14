@@ -7,7 +7,7 @@
   <br>
   <div style="padding-left: 20px">
     <h5>Category: <a href="{% url 'kitchen:category-detail' pk=dish.category.id %}">{{ dish.category.name }}</a></h5>
-    <h5>Price: {{ dish.price }}</h5>
+    <h5>Price: {{ dish.price }} $</h5>
   </div>
   {% if user.is_authenticated %}
     {% if user in dish.cooks.all %}
