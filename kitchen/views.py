@@ -150,8 +150,8 @@ class DishCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Dish
-    fields = "__all__"
+    queryset = Dish.objects.all()
+    form_class = DishForm
 
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):

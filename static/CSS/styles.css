@@ -1,8 +1,122 @@
 /* test */
-body {
-    background-color: lightgoldenrodyellow;
+html {
+    background: url(
+    "/static/image/spencer-davis-vJsj-hgOEG0-unsplash.jpg"
+    ) no-repeat fixed center / cover;
+    position: relative;
+    overflow-y: scroll;
 }
 
-.sidebar-nav{
+ul {
+    list-style-type: none;
+}
+
+body {
+    background: inherit;
+    font-weight: bold;
+}
+
+td {
+    color: #010101;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(177, 215, 248, 0.5);
+}
+
+a {
+    color: #03729b;
+    text-shadow: 1px 1px 1px rgba(14, 14, 14, .3);
+}
+tr {
+    text-align: center;
+}
+
+h1 {
+    text-shadow: 0 1px 0 #333;
+}
+
+
+.col-sm-6 {
+    padding: 15px;
+    border-radius: 50px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border: 15px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(254, 248, 221, 0.4);
+    box-shadow: 1px 1px 4px rgba(14, 14, 14, .3);
+    color: #032e58;
+    backdrop-filter: blur(5px);
+}
+
+
+.list-group-item {
     width: 70%;
+    border: 10px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(254, 248, 221, 0.4);
+    box-shadow: 1px 1px 4px rgba(14, 14, 14, .3);
+    color: #032e58;
+    backdrop-filter: blur(5px);
+}
+
+.sidebar-nav {
+    text-align: center;
+    width: 70%;
+    border-radius: 50px;
+    color: #369afc;
+}
+
+.slogan {
+    display: block;
+    border-radius: 40px;
+    padding: 15px;
+    background-color: rgba(238, 245, 141, 0.9);
+    margin: auto;
+    line-height: 12px;
+    font-size: xx-large;
+    width: 60%;
+}
+
+.btn-primary {
+    background-color: rgba(3, 84, 155, 0.6);
+    border-color: rgb(4, 111, 132);
+    text-shadow: 1px 1px 3px rgba(14, 14, 14, .3);
+}
+
+.page-link {
+    background-color: rgba(201, 252, 243, .5);
+    border-color: rgb(4, 111, 132);
+    color: #03729b;
+}
+
+
+.count {
+    background-color: rgb(54, 154, 252);
+    border-color: rgb(4, 111, 132);
+    color: #e7f3fe;
+}
+
+.btn-info {
+    background-color: rgb(4, 111, 132, 0.6);
+    border-color: rgb(4, 111, 132);
+    text-shadow: 1px 1px 3px rgba(14, 14, 14, .3);
+}
+
+.btn-danger {
+    background-color: rgba(202, 4, 4, 0.6);
+    border-color: rgb(162, 2, 2);
+    text-shadow: 1px 1px 3px rgba(14, 14, 14, .3);
+}
+
+.btn-secondary{
+    background-color: rgba(103, 118, 132, 0.6);
+    border-color: rgb(71, 81, 91);
+    text-shadow: 1px 1px 3px rgba(14, 14, 14, .3);
+}
+
+.btn-success {
+    background-color: rgba(66, 156, 62, 0.6);
+    border-color: rgb(38, 70, 40);
+    text-shadow: 1px 1px 3px rgba(14, 14, 14, .3);
 }
