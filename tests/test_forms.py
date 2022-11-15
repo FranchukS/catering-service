@@ -4,7 +4,7 @@ from kitchen.forms import CookCreationForm, CookExperienceUpdateForm
 
 
 class FormsTest(TestCase):
-    def test_cook_creation_form_with_experience_first_last_name_is_valid(self):
+    def test_cook_creation_form_with_experience_email_first_last_name_is_valid(self):
         form_data = {
             "username": "tester",
             "password1": "parol123",

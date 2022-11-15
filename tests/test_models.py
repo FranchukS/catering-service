@@ -13,8 +13,8 @@ class ModelsTests(TestCase):
         cook = Cook.objects.create_user(
             username="test",
             password="qwerty1",
-            first_name="test first",
-            last_name="test last",
+            first_name="Joe",
+            last_name="Shmoe",
             years_of_experience=2
         )
 
