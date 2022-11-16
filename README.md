@@ -4,7 +4,7 @@ Django project for managing catering service with dishes, food categories and co
 
 ## Check it out!
 
-[Catering service deployed on Render](PASTE_LINK_HERE)
+[Catering service deployed on Render](https://catering-service.onrender.com/)
 
 ## Login to website:
 login: quest password: aelrjhn37
@@ -14,10 +14,11 @@ login: quest password: aelrjhn37
 Python3 must be already installed
 
 ```shell
-git clone https://github.com/matechris/newspaper-agency-project.git
-cd newspaper-agency-project
+git clone https://github.com/FranchukS/catering-service
+cd catering-service
 python3 -m venv venv
-source venv/bin/activate
+venv\Scripts\activate (on Windows)
+source venv/bin/activate (on macOS)
 pip install -r requirements.txt
 python manage.py runserver # starts Django Server
 ```
