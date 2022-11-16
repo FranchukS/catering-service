@@ -4,7 +4,10 @@ Django project for managing catering service with dishes, food categories and co
 
 ## Check it out!
 
-[Newspaper agency deployed on Render](PASTE_LINK_HERE)
+[Catering service deployed on Render](PASTE_LINK_HERE)
+
+## Login to website:
+login: quest password: aelrjhn37
 
 ## Installation
 
@@ -27,7 +30,4 @@ python manage.py runserver # starts Django Server
 
 ## Demo
 
-[Website Interface](demo.PNG)
-
-## Login to website:
-login: quest password: aelrjhn37
+![Website Interface](demo.PNG)
