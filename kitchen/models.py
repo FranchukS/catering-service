@@ -20,7 +20,7 @@ class Dish(models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="dishes")
-    cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes", null=True)
+    cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes")
 
     class Meta:
         verbose_name_plural = "dishes"
