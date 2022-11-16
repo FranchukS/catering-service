@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Catering service</h1>
+  <div class="slogan">
+    <p style="text-align: left">Meet your cook,
+    <p style="text-align: center">who will
+    <p style="text-align: right">cook your meat!
+  </div>
+  <p>For your event you can pick</p>
+  <ul class="index-list">
+    <li>from {{ num_cooks }} <strong>cooks</strong> </li>
+    <li>choose from {{ num_dishes }} <strong>dishes</strong> </li>
+    <li>in {{ num_categories }} <strong>categories</strong> </li>
+  </ul>
+
+  <p class="visit-counter">You have visited this page
+      {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p><strong>Do you really want to delete {{ category.name }} from the list?</strong>
+  <p><i>All the dishes in this category will be deleted as well</i>
+
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <a class="btn btn-secondary" href="{% url "kitchen:category-list" %}">No, forget</a>
+  </form>
+{% endblock %}

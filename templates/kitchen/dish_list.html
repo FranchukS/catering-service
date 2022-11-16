@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Dish list
+    {% if user.is_authenticated %}
+      <a style="margin-left: 15px" class="btn btn-primary" href="{% url 'kitchen:dish-create' %}">
+        add new dish
+      </a>
+    {% endif %}
+  </h1>
+  <br>
+   {% include "includes/search.html" %}
+  <br>
+  {% if dish_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+      </tr>
+
+      {% for dish in dish_list %}
+        <tr>
+          <td>
+              {{ dish.id }}
+          </td>
+          <td>
+            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+          </td>
+          <td>
+              {{ dish.category.name }}
+          </td>
+          <td>
+              {{ dish.price }} $
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no dishes in the service.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Our cooks:
+    {% if user.is_authenticated %}
+    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary">
+      Add new cook
+    </a>
+    {% endif %}
+  </h1>
+  <br>
+  {% include "includes/search.html" %}
+  <br>
+  {% if cook_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Years of experience</th>
+        <th>Total dishes</th>
+      </tr>
+
+      {% for cook in cook_list %}
+        <tr>
+          <td>
+              {{ cook.id }}
+          </td>
+          <td>
+            <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+          </td>
+          <td>
+            {% if not cook.first_name %}
+              <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.username }}</a>
+            {% else %}
+              {{ cook.username }}
+            {% endif %}
+          </td>
+          <td>
+              {{ cook.years_of_experience }}
+          </td>
+          <td>
+            {{ cook.dishes.count }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no cooks available in the service.</p>
+  {% endif %}
+{% endblock %}

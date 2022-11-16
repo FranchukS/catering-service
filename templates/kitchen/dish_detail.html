@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 style="padding-top: 10px">
+    {{ dish.name }}
+  </h1>
+  <br>
+  <div style="padding-left: 20px">
+    <h5>Category: <a href="{% url 'kitchen:category-detail' pk=dish.category.id %}">{{ dish.category.name }}</a></h5>
+    <h5>Price: {{ dish.price }} $</h5>
+  </div>
+  {% if user.is_authenticated %}
+    {% if user in dish.cooks.all %}
+      <a style="margin-top: 30px" href="{% url 'kitchen:assign-or-discharge' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Discharge from this dish
+      </a>
+    {% else %}
+      <a style="margin-top: 30px" href="{% url 'kitchen:assign-or-discharge' pk=dish.id %}" class="btn btn-success link-to-page">
+        Assign me to this dish
+      </a>
+    {% endif %}
+  {% endif %}
+  <hr>
+  <div class="description">
+    {{ dish.description }}
+  </div>
+  <hr>
+  Cooks who can prepare:
+  {% if dish.cooks.all %}
+  <ul>
+    {% for cook in dish.cooks.all %}
+      <li><a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no cooks who can prepare this dish</p>
+  {% endif %}
+  {% if user.is_authenticated %}
+    <a style="float: left" href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+        Update
+    </a>
+    <a style="margin-left: 15px" href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Delete
+    </a>
+  {% endif %}
+{% endblock %}

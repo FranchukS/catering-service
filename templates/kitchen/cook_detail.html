@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ cook.first_name }} {{ cook.last_name }}
+  </h1>
+
+  <p><strong>Username:</strong> {{ cook.username }}</p>
+  <p><strong>Experience:</strong> {{ cook.years_of_experience }}</p>
+
+
+  <h4>Dishes</h4>
+  <div class="ml-3">
+
+
+        {% if cook.dishes.all %}
+          <table class="table">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Category</th>
+            </tr>
+            {% for dish in cook.dishes.all %}
+              <tr>
+                <td>
+                  {{ dish.id }}
+                </td>
+                <td>
+                  <a href="{% url 'kitchen:dish-detail' pk=dish.id%}">{{ dish.name }}</a>
+                </td>
+                <td>
+                  <a href="{% url 'kitchen:category-detail' pk=dish.category.id%}">{{ dish.category.name }}</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% else %}
+          <p>This cook have nothing to offer</p>
+        {% endif %}
+
+    {% if user.is_authenticated %}
+      <hr>
+      <a class="btn btn-secondary" href="{% url 'kitchen:experience-update' pk=cook.id %}">Update experience info</a>
+      <a class="btn btn-danger" href="{%  url 'kitchen:cook-delete' pk=cook.id %}">Delete cook</a>
+    {% endif %}
+  </div>
+{% endblock %}
