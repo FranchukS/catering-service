@@ -30,4 +30,4 @@ python manage.py runserver # starts Django Server
 [Website Interface](demo.PNG)
 
 ## Login to website:
-login: admin password: aelrjhn25
+login: quest password: aelrjhn37
