@@ -23,6 +23,17 @@ class ExperienceValidateMixin:
         return years_of_experience
 
 
+class DishPriceValidateMixin:
+    def clean_price(self):
+        price = self.cleaned_data["price"]
+
+        if price < 0:
+            raise ValidationError(
+                "We need pay for rent, price can't be lower then 0"
+            )
+        return price
+
+
 class CookCreationForm(ExperienceValidateMixin, UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
@@ -38,7 +49,7 @@ class CookExperienceUpdateForm(ExperienceValidateMixin, forms.ModelForm):
         fields = ("years_of_experience",)
 
 
-class DishForm(forms.ModelForm):
+class DishForm(DishPriceValidateMixin, forms.ModelForm):
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
