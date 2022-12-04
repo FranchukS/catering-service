@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm, SearchForm
+from kitchen.forms import CookCreationForm, CookExperienceUpdateForm, DishForm, SearchForm, UserSearchForm
 from kitchen.models import Cook, Dish, Category
 
 
@@ -82,7 +82,7 @@ class CookListView(generic.ListView):
         context = super(CookListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = SearchForm(
+        context["search_form"] = UserSearchForm(
             initial={"name": name}
         )
 

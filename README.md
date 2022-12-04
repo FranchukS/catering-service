@@ -7,7 +7,8 @@ Django project for managing catering service with dishes, food categories and co
 [Catering service deployed on Render](https://catering-service.onrender.com/)
 
 ## Login to website:
-login: quest password: aelrjhn37
+login: guest
+password: aelrjhn37
 
 ## Installation
 
